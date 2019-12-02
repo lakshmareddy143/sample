@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="justsimpleFlow" doc:id="79233e07-8677-4e87-a63e-1791b537e33b" >
+		<http:listener doc:name="Listener" doc:id="8de54b4c-d0a4-4b90-a20d-513d73e9a222" config-ref="HTTP_Listener_config1" path="/hello"/>
+		<logger level="INFO" doc:name="Logger" doc:id="7aa7b5ba-7b31-43f3-83c7-c5fc5f5b9c2a" message="request recived"/>
+		<set-payload value='#["hello ravi"]' doc:name="Set Payload" doc:id="e0110a51-f297-4809-8089-b4e7ed45491b" />
+		<logger level="INFO" doc:name="Logger" doc:id="2c6b66d4-3ef4-4864-acc2-e291eb6bff3d" message="response... #[payload]"/>
+	</flow>
+</mule>

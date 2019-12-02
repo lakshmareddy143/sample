@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<flow name="sampFlow" doc:id="9ef8cb26-7b26-486f-81ab-272cdebc0f9c" >
+		<http:listener doc:name="Listener" doc:id="3fcea4e4-cfdc-4a3b-b87b-a3c9ee3006b4" config-ref="HTTP_Listener_config1" path="/raju"/>
+		<set-payload value="request recived" doc:name="Set Payload" doc:id="9e7843c1-eb00-4b29-a0ae-fb642535254a" />
+		<flow-ref doc:name="privateflow" doc:id="1376499b-0cd3-4fae-a44d-04ac7e2d7a27" name="privateflow"/>
+		<logger level="INFO" doc:name="Logger" doc:id="b7ab9540-f79a-4162-a7c3-e0ab50f808d1" message="final response"/>
+	</flow>
+	<flow name="privateflow" doc:id="7f1199a7-9a05-490b-903a-ed3f97416b22" >
+		<http:request method="GET" doc:name="Request" doc:id="304544b7-5a8b-457f-becc-64d99da3ead1" path='#["/essentials/united/flights/" ++ attributes.queryParams.destination]' config-ref="HTTP_Request_configuration">
+		</http:request>
+	</flow>
+</mule>
